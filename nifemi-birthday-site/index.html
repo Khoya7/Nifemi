@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Nifemi</title>
+<meta name="description" content="A birthday celebration page for Nifemi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- decorative petal layer, filled by JS -->
+<div class="petal-field" id="petalField" aria-hidden="true"></div>
+
+<button class="sound-toggle" id="soundToggle" aria-pressed="false" aria-label="Toggle celebration sound">
+  <span class="sound-toggle__icon">♪</span>
+</button>
+
+<nav class="nav">
+  <span class="nav__mark">N.</span>
+  <ul class="nav__links">
+    <li><a href="#letter">The Letter</a></li>
+    <li><a href="#moments">Moments</a></li>
+    <li><a href="#message">Video</a></li>
+    <li><a href="#wish">Make a Wish</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero__note">World Nifemi Day, <time datetime="--10-13">October 13th</time></div>
+
+  <h1 class="hero__title">
+    <span class="hero__title-line hero__title-line--top">Happy</span>
+    <span class="hero__title-line hero__title-line--main">Birthday</span>
+    <span class="hero__title-line hero__title-line--name">Nifemi<span class="hero__comma">,</span></span>
+  </h1>
+
+  <p class="hero__sub">Today the calendar finally caught up with how bright you already are. Here's a little corner of the internet made just to celebrate you.</p>
+
+  <a href="#letter" class="hero__scroll" aria-label="Scroll to the letter">
+    <span></span>
+  </a>
+
+  <div class="hero__collage">
+    <figure class="hero__video hero__video--a">
+      <img src="images/nifemi-photo.jpg" alt="Nifemi smiling in the car, wearing glasses" width="720" height="1280" fetchpriority="high">
+    </figure>
+    <figure class="hero__video hero__video--b">
+      <video src="videos/clip-5.mp4" muted loop playsinline preload="metadata" poster="images/poster-5.jpg" aria-label="Nifemi in the car in an orange head wrap"></video>
+    </figure>
+    <figure class="hero__video hero__video--c">
+      <video src="videos/clip-7.mp4" poster="images/poster-7.jpg" muted loop playsinline preload="metadata" aria-label="Nifemi in a red top, walking and smiling"></video>
+    </figure>
+    <div class="hero__blob" aria-hidden="true"></div>
+  </div>
+</header>
+
+<!-- LETTER -->
+<section class="letter" id="letter">
+  <div class="letter__deco" aria-hidden="true">
+    <svg viewBox="0 0 200 200" class="letter__leaf">
+      <path d="M100 10 C150 40 180 90 100 190 C20 90 50 40 100 10Z" />
+    </svg>
+  </div>
+  <p class="letter__eyebrow">a note, before the celebration starts</p>
+  <p class="letter__body">Oluwanifemi Daniels</p>
+  <p class="letter__aliases">Fefe, Nifemi, Her Royal Majesty (self-proclaimed)</p>
+  <div class="letter__message">
+    <p>I call you my DOM Queen, my beautiful angel, babygirl, and more to come.</p>
+    <p>You are a sweet soul, troublesome most times, but a sweet girl. You have a wonderful personality, great energy, and great vibes. Your anger can be triggered with a snap of a finger, and let's not talk about getting overstimulated. What I am trying to say is that you are a beautiful lady with a wonderful heart, kind (on occasions), special, unique, weird (the good kind), and likeable (debatable).</p>
+    <p>On your birthday, I hope this new chapter brings you genuine happiness, peace, good health, and everything you've been praying for. You're a beautiful person, inside and out, and you deserve so many good things. May this year give you more reasons to smile, beautiful memories to keep, and people who truly appreciate you. Keep being the amazing person you are. Happy birthday, Nifemi.</p>
+  </div>
+  <div class="personality-notes" aria-label="A few things that make Nifemi special">
+    <article class="personality-note">
+      <span class="personality-note__number">01</span>
+      <h3>The bright energy</h3>
+      <p>You make a room feel more alive simply by being fully, unmistakably you.</p>
+    </article>
+    <article class="personality-note">
+      <span class="personality-note__number">02</span>
+      <h3>The real laughter</h3>
+      <p>Your laugh has a way of turning tiny moments into stories worth keeping.</p>
+    </article>
+    <article class="personality-note">
+      <span class="personality-note__number">03</span>
+      <h3>The soft heart</h3>
+      <p>You care loudly, love generously, and make people feel remembered.</p>
+    </article>
+  </div>
+  <p class="letter__sign">With love, always</p>
+</section>
+
+<!-- VIDEO MOMENTS -->
+<section class="gallery" id="moments">
+  <div class="gallery__head">
+    <p class="gallery__kicker">a little moving picture show</p>
+    <h2 class="gallery__title">Moments worth replaying</h2>
+    <p class="gallery__sub">Because a still frame could never quite hold all that personality.</p>
+  </div>
+
+  <div class="gallery__grid">
+    <figure class="polaroid polaroid--1"><video data-src="videos/clip-1.mp4" poster="images/poster-1.jpg" muted loop playsinline preload="none" aria-label="Nifemi in a cap, being her bright self"></video><figcaption>the bright energy</figcaption></figure>
+    <figure class="polaroid polaroid--2"><video data-src="videos/clip-2.mp4" poster="images/poster-2.jpg" muted loop playsinline preload="none" aria-label="A happy moment with Nifemi"></video><figcaption>the good laugh</figcaption></figure>
+    <figure class="polaroid polaroid--3"><video data-src="videos/clip-3.mp4" poster="images/poster-3.jpg" muted loop playsinline preload="none" aria-label="Nifemi dancing and full of joy"></video><figcaption>the main character moment</figcaption></figure>
+    <figure class="polaroid polaroid--4"><video data-src="videos/clip-4.mp4" poster="images/poster-4.jpg" muted loop playsinline preload="none" aria-label="A tender moment with Nifemi"></video><figcaption>the soft heart</figcaption></figure>
+    <figure class="polaroid polaroid--5"><video data-src="videos/clip-6.mp4" poster="images/poster-6.jpg" muted loop playsinline preload="none" aria-label="Nifemi out in the sunshine"></video><figcaption>the celebration</figcaption></figure>
+    <figure class="polaroid polaroid--6"><video data-src="videos/clip-8.mp4" poster="images/poster-8.jpg" muted loop playsinline preload="none" aria-label="Another moment worth replaying with Nifemi"></video><figcaption>more joy, please</figcaption></figure>
+  </div>
+</section>
+
+<!-- VIDEO MESSAGE -->
+<section class="video-section" id="message">
+  <div class="video-section__text">
+    <p class="video-section__kicker">press play, obviously</p>
+    <h2 class="video-section__title">A message for you</h2>
+    <p class="video-section__sub">For the stories, the big dreams, the random check-ins, and every version of you still waiting to unfold: this one is for you, Nifemi.</p>
+  </div>
+
+  <div class="video-frame">
+    <video
+      id="birthdayVideo"
+      poster="images/message-poster.jpg"
+      preload="metadata"
+      playsinline
+      controls>
+      <source src="videos/message-to-nifemi.mp4" type="video/mp4">
+      Your browser doesn't support embedded video — open <a href="videos/message-to-nifemi.mp4">the video file</a> directly.
+    </video>
+    <button class="video-frame__play" id="playButton" aria-label="Play video message">
+      <svg viewBox="0 0 60 60"><polygon points="22,16 44,30 22,44"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- INTERACTIVE CAKE -->
+<section class="cake-section" id="wish">
+  <h2 class="cake-section__title">Make a wish, Nifemi</h2>
+  <p class="cake-section__sub" id="cakeInstruction">Tap each candle to blow it out. When the last one goes dark, make it count.</p>
+
+  <div class="cake" id="cake">
+    <div class="cake__candles" id="candles">
+      <button class="candle" data-lit="true" aria-label="Blow out candle 1"><span class="candle__flame"></span></button>
+      <button class="candle" data-lit="true" aria-label="Blow out candle 2"><span class="candle__flame"></span></button>
+      <button class="candle" data-lit="true" aria-label="Blow out candle 3"><span class="candle__flame"></span></button>
+      <button class="candle" data-lit="true" aria-label="Blow out candle 4"><span class="candle__flame"></span></button>
+      <button class="candle" data-lit="true" aria-label="Blow out candle 5"><span class="candle__flame"></span></button>
+    </div>
+    <div class="cake__tier cake__tier--top">
+      <span class="cake__icing"></span>
+    </div>
+    <div class="cake__tier cake__tier--bottom">
+      <span class="cake__icing"></span>
+    </div>
+    <div class="cake__plate"></div>
+  </div>
+
+  <div class="wish-made" id="wishMade" hidden>
+    <p>Wish made. May every bit of it find its way to you, Nifemi.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <p class="footer__line">Made with care, for Nifemi's birthday — <span id="footerYear"></span></p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
