@@ -57,14 +57,31 @@ document.addEventListener('DOMContentLoaded', () => {
     if (attempt && attempt.catch) attempt.catch(() => {});
   }
   if ('IntersectionObserver' in window && !prefersReducedMotion) {
+    function loadClip(v) {
+      if (v.dataset.src && !v.getAttribute('src')) {
+        v.preload = 'auto';
+        v.setAttribute('src', v.dataset.src);
+        v.load();
+      }
+    }
+    const preloadDistance = window.matchMedia('(max-width: 680px)').matches
+      ? '500px 0px'
+      : '250px 0px';
+    const preloadObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          loadClip(entry.target);
+          preloadObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: preloadDistance });
+    loopVideos.forEach((v) => preloadObserver.observe(v));
+
     const vio = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const v = entry.target;
         if (entry.isIntersecting) {
-          if (v.dataset.src && !v.getAttribute('src')) {
-            v.setAttribute('src', v.dataset.src);
-            v.load();
-          }
+          loadClip(v);
           playSafe(v);
         } else {
           v.pause();
