@@ -56,27 +56,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const attempt = v.play();
     if (attempt && attempt.catch) attempt.catch(() => {});
   }
-  if ('IntersectionObserver' in window && !prefersReducedMotion) {
-    function loadClip(v) {
-      if (v.dataset.src && !v.getAttribute('src')) {
-        v.preload = 'auto';
-        v.setAttribute('src', v.dataset.src);
-        v.load();
-      }
+  function loadClip(v) {
+    if (v.dataset.src && !v.getAttribute('src')) {
+      v.setAttribute('src', v.dataset.src);
+      v.load();
     }
-    const preloadDistance = window.matchMedia('(max-width: 680px)').matches
-      ? '500px 0px'
-      : '250px 0px';
-    const preloadObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          loadClip(entry.target);
-          preloadObserver.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: preloadDistance });
-    loopVideos.forEach((v) => preloadObserver.observe(v));
-
+  }
+  loopVideos.forEach((v) => {
+    v.addEventListener('click', () => {
+      loadClip(v);
+      playSafe(v);
+    });
+  });
+  if ('IntersectionObserver' in window) {
     const vio = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const v = entry.target;
@@ -90,9 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.25 });
     loopVideos.forEach((v) => vio.observe(v));
   } else {
-    // Reduced motion / old browsers: load the files but show the first frame only
+    // Without IntersectionObserver, load metadata but avoid starting every clip.
     loopVideos.forEach((v) => {
-      if (v.dataset.src && !v.getAttribute('src')) v.setAttribute('src', v.dataset.src);
+      loadClip(v);
       v.preload = 'metadata';
     });
   }
