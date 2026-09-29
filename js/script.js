@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const batteryNote = document.getElementById('batteryNote');
+  if (batteryNote) setTimeout(() => batteryNote.remove(), 5000);
 
   /* ----------------------------------------
      1. Ambient falling petals

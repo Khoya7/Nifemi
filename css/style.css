@@ -80,6 +80,25 @@ code {
   to { transform: translateY(110vh) translateX(var(--drift, 40px)) rotate(300deg); }
 }
 
+.battery-note {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  left: 50%;
+  z-index: 80;
+  max-width: calc(100vw - 32px);
+  margin: 0;
+  padding: 11px 16px;
+  transform: translateX(-50%);
+  border-radius: 6px;
+  background: var(--plum);
+  color: var(--ivory);
+  box-shadow: 0 8px 24px rgba(43,35,32,.22);
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+}
+
 /* ============================================
    Sound toggle
    ============================================ */
