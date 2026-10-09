@@ -100,13 +100,19 @@ code {
 }
 
 /* ============================================
-   Sound toggle
+   Corner controls (secret + sound)
    ============================================ */
-.sound-toggle {
+.corner-controls {
   position: fixed;
   bottom: 22px;
   right: 22px;
   z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.sound-toggle {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -663,3 +669,109 @@ code {
    Reveal-on-scroll utility
    ============================================ */
 .gallery__grid .polaroid { will-change: transform, opacity; }
+
+/* ============================================
+   Secret footer trigger
+   ============================================ */
+.footer__secret {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(74,25,66,.18);
+  background: var(--ivory);
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--marigold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: 0 6px 18px rgba(74,25,66,.14);
+  transition: transform .5s ease, background .25s, color .25s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.footer__secret:hover,
+.footer__secret:focus-visible {
+  transform: rotate(72deg) scale(1.07);
+  background: var(--marigold);
+  color: var(--ivory);
+  outline: none;
+}
+
+/* ============================================
+   Secret unlock overlay
+   ============================================ */
+.secret-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--plum);
+  opacity: 0;
+  transition: opacity .5s ease;
+  pointer-events: none;
+}
+.secret-overlay:not([hidden]) {
+  pointer-events: auto;
+}
+.secret-overlay.is-entering {
+  opacity: 1;
+}
+.secret-overlay.is-leaving {
+  opacity: 0;
+  transition: opacity .7s ease .6s;
+}
+
+.secret-overlay__inner {
+  text-align: center;
+  transform: scale(.7);
+  opacity: 0;
+  transition: transform .7s cubic-bezier(.22,.68,0,1.2) .15s, opacity .5s ease .15s;
+}
+.secret-overlay.is-entering .secret-overlay__inner {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.secret-overlay__star {
+  font-size: clamp(5rem, 18vw, 9rem);
+  color: var(--marigold);
+  line-height: 1;
+  display: block;
+  animation: secret-spin 2.4s cubic-bezier(.22,.68,0,1) forwards;
+  transform-origin: center;
+  filter: drop-shadow(0 0 40px rgba(232,163,61,.5));
+}
+@keyframes secret-spin {
+  0%   { transform: rotate(0deg) scale(.4); opacity: 0; }
+  40%  { opacity: 1; }
+  80%  { transform: rotate(360deg) scale(1.12); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.secret-overlay__label {
+  margin-top: 24px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  color: var(--ivory);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .5s ease .55s, transform .5s ease .55s;
+}
+.secret-overlay.is-entering .secret-overlay__label {
+  opacity: .85;
+  transform: translateY(0);
+}
+
+/* Video section entrance */
+.video-section.is-revealed {
+  animation: secret-section-in .9s cubic-bezier(.22,.68,0,1) both;
+}
+@keyframes secret-section-in {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

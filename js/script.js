@@ -213,4 +213,54 @@ document.addEventListener('DOMContentLoaded', () => {
   const footerYear = document.getElementById('footerYear');
   if (footerYear) footerYear.textContent = new Date().getFullYear();
 
+  /* ----------------------------------------
+     7. Secret star — unlocks hidden video
+  ---------------------------------------- */
+  const secretTrigger = document.getElementById('secretTrigger');
+  const secretOverlay = document.getElementById('secretOverlay');
+  const messageSection = document.getElementById('message');
+  let secretUnlocked = false;
+
+  if (secretTrigger && secretOverlay && messageSection) {
+    secretTrigger.addEventListener('click', () => {
+      if (secretUnlocked) {
+        // Already revealed — just scroll back to it
+        messageSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+
+      // Show overlay
+      secretOverlay.hidden = false;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          secretOverlay.classList.add('is-entering');
+        });
+      });
+
+      // After overlay animation completes, reveal section & scroll
+      setTimeout(() => {
+        // Show the video section
+        messageSection.style.display = '';
+        messageSection.removeAttribute('aria-hidden');
+        messageSection.classList.add('is-revealed');
+        secretUnlocked = true;
+
+        // Start leaving animation on overlay
+        secretOverlay.classList.remove('is-entering');
+        secretOverlay.classList.add('is-leaving');
+
+        // Scroll to the section while overlay fades
+        setTimeout(() => {
+          messageSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+
+        // Hide overlay fully after fade
+        setTimeout(() => {
+          secretOverlay.hidden = true;
+          secretOverlay.classList.remove('is-leaving');
+        }, 1400);
+      }, 2200);
+    });
+  }
+
 });
